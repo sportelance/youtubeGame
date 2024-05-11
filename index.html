@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>VideoPlayer</title>
+  <link href="styles.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="script.js"></script>
+</head>
+
+<body>
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <button class="nav-link active" id="play-game-button" onclick="toggleDisplayedComponent()">Play Game</button>
+    </li>
+    <li class="nav-item">
+      <button class="nav-link" id="add-videos-button" onclick="toggleDisplayedComponent()">Add Videos</button>
+    </li>
+  </ul>
+  <main id="videoControls">
+    <div id="videoCarousel" class="carousel">
+      <div id="carousel-inner" display ="flex" align-items="center" justify-content="center">
+        <div class="carousel-item active">
+          <iframe src="https://www.youtube.com/embed/vR6_ZVKEhJ4?si=WWFG13XZnUubAlKc" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+          <!-- Add more video items as needed -->
+      </div>
+      <button class="carousel-control-prev" onclick="previousVideo()">&#10094;</button>
+      <button class="carousel-control-next" onclick="nextVideo()">&#10095;</button>
+    </div>
+    <div>
+      <button class="carousel-controls-delete" onclick="deleteDisplayedVideo()">Delete this Video</button>
+      <button class="carousel-controls-shuffle" onclick="shuffleVideos()">Shuffle Videos</button>
+    </div>
+  </main>
+
+  <div id="addVideoContainer">
+    <label for="youtubeLink">Enter YouTube Embed Link:</label>
+    <input type="text" id="youtubeLink" placeholder="Paste YouTube embed link here">
+    <button onclick="checkYouTubeLink()">Submit</button>
+    <p id="errorMessage"></p>
+  </div>
+</body>
+
+</html>

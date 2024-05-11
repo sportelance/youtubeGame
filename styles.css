@@ -1,0 +1,125 @@
+.nav.nav-tabs {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    list-style-type: none;
+    padding: 0;
+}
+
+.nav.nav-tabs li.nav-item {
+    display: inline-block;
+}
+
+.nav.nav-tabs li.nav-item a.nav-link {
+    display: block;
+    padding: 10px 15px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.nav.nav-tabs li.nav-item a.nav-link:hover {
+    background-color: #e9ecef;
+}
+
+.nav.nav-tabs li.nav-item a.nav-link.active {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* Set carousel width and height */
+#videoCarousel {
+    width: 90%; /* Adjust width as needed */
+    height: auto; /* Adjust height as needed */
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Set each carousel item to take full width of container */
+.carousel-item {
+    width: 100%;
+    transition: transform 0.5s ease;
+    display: none; /* Hide all videos initially */
+}
+
+/* Display only the active video */
+.carousel-item.active {
+    display: block;
+}
+
+/* Style for iframe */
+.carousel-item iframe {
+    width: 600px;
+    height: 400px;
+}
+
+/* Style control buttons */
+.carousel-control-prev,
+.carousel-control-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Increase opacity on hover for control buttons */
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Position previous button */
+.carousel-control-prev {
+    left: 10px;
+}
+
+/* Position next button */
+.carousel-control-next {
+    right: 10px;
+}
+
+/* Add videos stuff */
+    .container {
+    margin: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"] {
+    width: 300px;
+    padding: 8px;
+    font-size: 16px;
+}
+
+button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#errorMessage {
+    color: red;
+    margin-top: 10px;
+}
+
+/* initially hide add video */
+#addVideoContainer {
+    display: none
+}
