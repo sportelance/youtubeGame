@@ -34,21 +34,39 @@ function addVideoByLink(videoLink) {
 }
 
 function checkYouTubeLink() {
-    var input = document.getElementById("youtubeLink").value;
-    var errorMessage = document.getElementById("errorMessage");
+    const potentialYoutubeLink = document.getElementById("youtubeLink").value;
+    const errorBox = document.getElementById("errorMessage");
   
     // Regular expression to match YouTube embed links
-    var regex = /youtube.*embed/
-    if (videoStore.includes(input)) {
-        errorMessage.textContent = "This video has already been added.";
-    } else if (regex.test(input)) {
-      errorMessage.textContent = ""; // Clear any previous error message
-      alert("YouTube embed link submitted successfully!");
-      addVideoByLink(input);        
+    const youtubeEmbedRegex = /youtube.*embed/;
+    const youtubeRegex = /youtube*/;
+    if (videoStore.includes(potentialYoutubeLink)) {
+        errorBox.textContent = "This video has already been added.";
+    } else if (youtubeEmbedRegex.test(potentialYoutubeLink)) {
+        addAndAlert(potentialYoutubeLink, errorBox);
+    } else if (youtubeRegex.test(potentialYoutubeLink)) {
+        const embedLink = convertToEmbedLink(potentialYoutubeLink);
+        addAndAlert(embedLink, errorBox);
     } else {
-        errorMessage.textContent = "Please enter a valid YouTube embed link.";
+        errorBox.textContent = "Please enter a valid YouTube embed link.";
     }
 }
+
+function addAndAlert(potentialYoutubeLink, errorBox) {
+    errorBox.textContent = ""; // Clear any previous error message
+    alert("YouTube embed link submitted successfully!");
+    addVideoByLink(potentialYoutubeLink);   
+}
+
+function convertToEmbedLink(youtubeLink) {
+    // Extract video ID from the YouTube link
+    var videoID = youtubeLink.match(/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/)[1];
+  
+    // Construct the embed link using the video ID
+    var embedLink = "https://www.youtube.com/embed/" + videoID;
+  
+    return embedLink;
+  }
 
 function previousVideo() {
     displayedVideoIndex = (displayedVideoIndex - 1 + videoStore.length) % videoStore.length;
